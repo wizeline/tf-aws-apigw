@@ -15,9 +15,15 @@ variable "tags" {
 #-----------------------------------------------------------
 # API Gateway
 #-----------------------------------------------------------
+variable "apigateway_version" {
+  type        = string
+  description = "(Optional) Type of API Gateway to create. Use v1 for REST APIs and v2 for HTTP/WEBSOCKET APIs."
+  default     = "v2"
+}
+
 variable "protocol_type" {
   type        = string
-  description = "(Optional) API protocol. Valid values: HTTP, WEBSOCKET."
+  description = "(Optional) API protocol. Only for API GAteway v2. Valid values: HTTP, WEBSOCKET."
   default     = "HTTP"
 }
 
@@ -36,7 +42,7 @@ variable "disable_execute_api_endpoint" {
 #-----------------------------------------------------------
 # Route 53
 #-----------------------------------------------------------
-variable "custom_dns_enabled" {
+variable "custom_domain_enabled" {
   type        = bool
   description = "(Optional) Enable custom DNS resources."
   default     = false
@@ -48,7 +54,7 @@ variable "hosted_zone" {
   default     = ""
 }
 
-variable "custom_dns" {
+variable "custom_domain_name" {
   type        = string
   description = "(Optional) Domain name. Must be between 1 and 512 characters in length."
   default     = ""
